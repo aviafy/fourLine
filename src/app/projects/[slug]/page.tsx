@@ -17,9 +17,10 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const project = projects.find((entry) => entry.slug === slug);
   if (!project) notFound();
+  const indexable = isPublishedProject(project);
   return pageMetadata({
     title: project.name, description: project.overview ?? projectOrigins[project.origin].description,
-    path: `/projects/${slug}`, image: project.cover?.src, indexable: isPublishedProject(project),
+    path: `/projects/${slug}`, image: indexable ? project.cover : undefined, indexable,
   });
 }
 

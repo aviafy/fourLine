@@ -23,5 +23,17 @@ export const company: Company = {
   description: "ელექტროსამონტაჟო სამუშაოები და სუსტი დენების სისტემები საცხოვრებელი და კომერციული მშენებლობისთვის თბილისში და საქართველოს მასშტაბით.",
 };
 
-export const siteUrl = process.env.SITE_URL ? new URL(process.env.SITE_URL) : undefined;
-export const allowIndexing = siteUrl?.protocol === "https:" && process.env.SITE_INDEXABLE === "true";
+const configuredUrl = process.env.SITE_URL?.trim();
+export const siteUrl = configuredUrl ? new URL(configuredUrl) : undefined;
+
+if (siteUrl && (
+  !["http:", "https:"].includes(siteUrl.protocol) ||
+  siteUrl.href !== `${siteUrl.origin}/`
+)) {
+  throw new Error("SITE_URL must be an HTTP or HTTPS origin without a path, query string, or fragment.");
+}
+
+const vercelEnvironment = process.env.VERCEL_ENV;
+export const allowIndexing = siteUrl?.protocol === "https:" &&
+  process.env.SITE_INDEXABLE === "true" &&
+  (!vercelEnvironment || vercelEnvironment === "production");

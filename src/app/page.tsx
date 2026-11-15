@@ -3,8 +3,8 @@ import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import { Founders } from "@/components/founders";
 import { ProjectCard } from "@/components/projects";
 import { ServiceList } from "@/components/service-list";
-import { Label, Photo, ProposalBanner, ProposalButton, TextLink } from "@/components/shared";
-import { company } from "@/data/company";
+import { JsonLd, Label, Photo, ProposalBanner, ProposalButton, TextLink } from "@/components/shared";
+import { company, siteUrl } from "@/data/company";
 import { imagery } from "@/data/images";
 import { processSteps } from "@/data/process";
 import { isPublishedProject, projects, publishedProjects } from "@/data/projects";
@@ -23,6 +23,13 @@ export default function Home() {
 
   return (
     <>
+      {siteUrl && <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: company.name,
+        url: siteUrl.href,
+        inLanguage: "ka",
+      }} />}
       <section className="hero">
         <Photo image={imagery.hero} className="hero-photo" sizes="100vw" preload />
         <div className="hero-overlay" />

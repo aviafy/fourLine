@@ -48,7 +48,9 @@ The POST handler validates the request with Zod, checks the request origin, limi
 
 Supply the approved circuit-4 logo, two founder profiles and portraits, attributable project records and photos, company legal details, and public contact information. Review the Georgian copy and the privacy notice in `src/app/privacy/page.tsx` against the actual service scope and data-handling practice. The privacy route stays excluded from indexing while the notice awaits approval.
 
-After content and delivery are approved, set `SITE_INDEXABLE=true` with the canonical HTTPS origin and rebuild. Verify the canonical tags and `/sitemap.xml` on the public host.
+On Vercel, import the repository with the **Next.js** framework preset and use `main` as the production branch. In Production environment variables, set `SITE_URL` to the final HTTPS domain origin. Keep Vercel system environment variables exposed so the application can identify Preview deployments.
+
+After content and delivery are approved, set `SITE_INDEXABLE=true` in **Production** and redeploy. Verify that the homepage declares the final domain as canonical and submit `/sitemap.xml` in Google Search Console. Preview builds emit `noindex` and omit the sitemap reference from `robots.txt`.
 
 ## Illustrative images
 

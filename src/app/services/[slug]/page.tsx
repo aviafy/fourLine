@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const service = serviceBySlug.get(slug);
   if (!service) notFound();
-  return pageMetadata({ title: service.title, description: service.summary, path: `/services/${slug}`, image: service.image.src });
+  return pageMetadata({ title: service.title, description: service.summary, path: `/services/${slug}`, image: service.image });
 }
 
 export default async function ServicePage({ params }: Props) {

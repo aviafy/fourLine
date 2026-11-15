@@ -3,8 +3,8 @@ import { allowIndexing } from "@/data/company";
 import { absoluteUrl } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
-  return allowIndexing ? {
+  return {
     rules: { userAgent: "*", allow: "/", disallow: ["/api/"] },
-    sitemap: absoluteUrl("/sitemap.xml"),
-  } : { rules: { userAgent: "*", disallow: "/" } };
+    sitemap: allowIndexing ? absoluteUrl("/sitemap.xml") : undefined,
+  };
 }

@@ -22,7 +22,7 @@ const latin = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: siteUrl ?? new URL("http://localhost:3000"),
+  metadataBase: siteUrl,
   title: { default: company.name, template: "%s | FOURLINE" },
   description: company.description,
 };

@@ -39,7 +39,7 @@ Place approved images under `public/images`. Use project origins `fourline` for 
 
 1. Verify a sending domain in [Resend](https://resend.com/docs/dashboard/domains/introduction).
 2. Set `RESEND_API_KEY`, `PROPOSAL_FROM_EMAIL` from the verified domain, and `PROPOSAL_TO_EMAIL` for the inquiry inbox in the server environment.
-3. Set `SITE_URL` to the exact canonical HTTPS origin. Set `FOURLINE_PHONE` and `FOURLINE_EMAIL` to the approved public contact details.
+3. Set `SITE_URL` to the exact canonical HTTPS origin. The public contacts in `src/data/company.ts` can be overridden with `FOURLINE_EMAIL` and `FOURLINE_PHONE` (a comma-separated list of numbers).
 4. Rebuild with the production configuration, submit an inquiry, and verify it arrives in the inbox.
 
 The POST handler validates the request with Zod, checks the request origin, limits the body size, and uses a honeypot, per-instance rate limiting and an idempotency key. The UI reports acceptance only after the provider returns a message ID. API keys are read exclusively on the server. Set `PROPOSAL_TRUSTED_IP_HEADER` only if your ingress overwrites that header with the verified client IP. Apply a shared edge rate limit to `POST /api/proposal` on multi-instance hosts if a uniform quota is needed.

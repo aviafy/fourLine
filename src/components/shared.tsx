@@ -94,7 +94,7 @@ export function SiteFooter() {
           <nav aria-label="ქვედა მენიუ"><ul>{navigation.map(({ href, label }) => <li key={href}><Link href={href}>{label}</Link></li>)}</ul></nav>
           <address>
             <p>{company.city}, {company.country}</p>
-            {company.phone && <a href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}>{company.phone}</a>}
+            {company.phones.map(({ label, number }) => <a key={number} href={`tel:${number}`}>{label}</a>)}
             {company.email && <a href={`mailto:${company.email}`}>{company.email}</a>}
             <Link href="/contact#proposal">პროექტის განხილვა <ArrowRight size={14} aria-hidden /></Link>
           </address>

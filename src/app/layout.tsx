@@ -43,7 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           ...(company.legalName && { legalName: company.legalName }),
           ...(siteUrl && { url: siteUrl.href }),
           ...(siteUrl && company.logoPath && { logo: new URL(company.logoPath, siteUrl).href }),
-          ...(company.phone && { telephone: company.phone }),
+          ...(company.phones.length && { telephone: company.phones.map(({ number }) => number) }),
           ...(company.email && { email: company.email }),
           areaServed: [{ "@type": "City", name: "Tbilisi" }, { "@type": "Country", name: "Georgia" }],
         }} />

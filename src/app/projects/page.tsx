@@ -5,10 +5,11 @@ import { projectOrigins, projects, publishedProjects, type ProjectOrigin } from 
 import { pageMetadata } from "@/lib/seo";
 
 const types = Array.from(new Set(publishedProjects.flatMap((project) => project.buildingType ? [project.buildingType] : [])));
+const portfolio = publishedProjects.length ? publishedProjects : projects;
 
 export const metadata = pageMetadata({
   title: "პროექტები და გამოცდილება",
-  description: "FOURLINE-ის სახელით შესრულებული სამუშაოები და კომპანიის დაარსებამდე დამფუძნებლების მიერ შესრულებული პროექტები.",
+  description: "გაეცანით შესრულებულ ელექტროსამონტაჟო სამუშაოებს, დამონტაჟებულ საინჟინრო სისტემებსა და ობიექტების ფოტოებს.",
   path: "/projects",
   indexable: publishedProjects.length > 0,
 });
@@ -20,7 +21,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
   return (
     <>
       <PageIntro items={[{ href: "/projects", label: "პროექტები" }]} label="პორტფოლიო"
-        title="პროექტები და გამოცდილება" description="გაეცანით FOURLINE-ის პროექტებსა და დამფუძნებლების მიერ კომპანიის შექმნამდე შესრულებულ სამუშაოებს." />
+        title="პროექტები და გამოცდილება" description="შესრულებული ელექტროსამონტაჟო სამუშაოები და საინჟინრო სისტემები." />
       <section className="section-pad listing-section" aria-label="პროექტების პორტფოლიო">
         <div className="container">
           {types.length > 1 && <nav className="filter-list" aria-label="გაფილტვრა შენობის ტიპით">
@@ -29,9 +30,9 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
               aria-current={activeType === name ? "page" : undefined}>{name}</Link>)}
           </nav>}
           {origins.map((origin) => {
-            const entries = publishedProjects.filter((project) => project.origin === origin);
-            const visible = activeType ? entries.filter((project) => project.buildingType === activeType)
-              : entries.length ? entries : projects.filter((project) => project.origin === origin);
+            const visible = portfolio.filter((project) =>
+              project.origin === origin && (!activeType || project.buildingType === activeType),
+            );
             if (!visible.length) return null;
             return (
               <section className="project-group" key={origin} aria-labelledby={`portfolio-${origin}`}>

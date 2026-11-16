@@ -58,6 +58,7 @@ export const projects: Project[] = [
     ],
     cover: { src: "/images/projects/batumi-school-21/cover.webp", alt: "ბათუმის №21 საჯარო სკოლის ფასადი ქუჩის მხრიდან", position: "center 43%" },
     gallery: [
+      { src: "/images/projects/batumi-school-21/computer-room.webp", alt: "სკოლის დასრულებული კომპიუტერების ოთახი მოწყობილი სამუშაო ადგილებითა და ჭერის განათებით", position: "center 62%" },
       { src: "/images/projects/batumi-school-21/interior-lighting.webp", alt: "დასრულებული შიდა სივრცე ჩართული ჭერის განათებით" },
       { src: "/images/projects/batumi-school-21/ceiling-installation.webp", alt: "ჭერის განათება და სავენტილაციო არხი სამონტაჟო სამუშაოებისას" },
       { src: "/images/projects/batumi-school-21/cable-routes.webp", alt: "ჭერთან გაყვანილი კაბელები და სავენტილაციო არხი" },

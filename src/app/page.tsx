@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Founders } from "@/components/founders";
 import { ProjectCard } from "@/components/projects";
 import { ServiceList } from "@/components/service-list";
@@ -33,7 +33,7 @@ export default function Home() {
       <section className="hero">
         <Photo image={imagery.hero} className="hero-photo" sizes="100vw" preload />
         <div className="container hero-content">
-          <span className="hero-location"><MapPin size={15} aria-hidden /> თბილისი, საქართველო</span>
+          <span className="hero-tagline" lang="en">ELECTRICAL &amp; LOW VOLTAGE SYSTEMS</span>
           <h1>ელექტრო და <span>საინჟინრო სისტემები</span></h1>
           <p>ელექტრომონტაჟი, ქსელური ინფრასტრუქტურა და სახანძრო სიგნალიზაცია საცხოვრებელი და კომერციული ობიექტებისთვის.</p>
           <div className="hero-actions">

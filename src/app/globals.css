@@ -122,11 +122,11 @@ a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
     linear-gradient(0deg, #07142a52, transparent 26%);
 }
 .hero-content { position: relative; z-index: 2; padding-block: 74px; }
-.hero-location {
-  display: inline-flex; align-items: center; gap: 8px; color: #c7defb;
-  font-size: .84rem; font-weight: 690;
+.hero-tagline {
+  display: inline-flex; align-items: center; gap: 10px; color: #c7defb;
+  font-size: clamp(.72rem, 1.06vw, .88rem); line-height: 1.5; font-weight: 690; letter-spacing: .09em;
 }
-.hero-location svg { color: var(--blue-light); }
+.hero-tagline::before { content: ""; flex: 0 0 19px; height: 1px; background: var(--blue-light); }
 .hero-content h1 {
   margin-block: 17px 21px; max-width: 780px; font-size: clamp(2.65rem, 4.55vw, 4.65rem);
   line-height: 1.14; font-weight: 800;

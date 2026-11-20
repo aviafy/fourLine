@@ -203,6 +203,9 @@ a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .founder-details p:not(.founder-role) { font-size: .83rem; }
 .founder-details p + p { margin-top: 10px; }
 .founder-details .founder-role { color: var(--blue-light); font-size: .69rem; font-weight: 750; }
+.founders-grid-full { align-items: start; }
+.founders-grid-full .founder-card { grid-template-columns: 1fr; }
+.founders-grid-full .founder-card .photo, .founders-grid-full .portrait-placeholder { min-height: 0; aspect-ratio: 1.46; }
 .founders-more { margin-top: 25px; }
 .founders-section .text-link { border-color: #66768d; }
 .founders-section .text-link:hover { border-color: var(--color-accent); }

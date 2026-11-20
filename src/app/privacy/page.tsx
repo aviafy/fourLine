@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "კონფიდენციალურობა",
-  description: "როგორ მუშავდება FOURLINE-ის ვებგვერდზე კომერციული შეთავაზების ფორმით მოწოდებული ინფორმაცია.",
+  description: "როგორ მუშავდება VoltNet-ის ვებგვერდზე კომერციული შეთავაზების ფორმით მოწოდებული ინფორმაცია.",
   path: "/privacy",
   indexable: false,
 });

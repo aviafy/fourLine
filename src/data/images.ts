@@ -6,7 +6,7 @@ export interface ImageAsset {
 }
 
 export const imagery = {
-  hero: { src: "/images/architecture.webp", alt: "თანამედროვე საცხოვრებელი შენობის ტერასები საღამოს განათებაში", illustrative: true },
+  hero: { src: "/images/engineering-hero.webp", alt: "თანამედროვე შენობის საინჟინრო ჭრილი ელექტროგაყვანილობითა და საკაბელო არხებით", illustrative: true },
   facade: { src: "/images/facade.webp", alt: "ორი ბეტონის ფასადის გეომეტრია ქვედა ხედიდან", illustrative: true },
   conduit: { src: "/images/conduit.webp", alt: "საკაბელო არხები ბეტონის დერეფნის ჭერზე", illustrative: true },
   panels: { src: "/images/panels.webp", alt: "ელექტროგამანაწილებელი ფარების რიგი ტექნიკურ ოთახში", illustrative: true },

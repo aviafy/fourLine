@@ -3,7 +3,7 @@ import { allowIndexing, company, siteUrl } from "@/data/company";
 import { imagery, type ImageAsset } from "@/data/images";
 
 export function absoluteUrl(path: string) {
-  return siteUrl ? new URL(path, siteUrl).href : undefined;
+  return new URL(path, siteUrl).href;
 }
 
 export function pageMetadata({
@@ -14,14 +14,13 @@ export function pageMetadata({
   indexable = true,
 }: { title: string; description: string; path: string; image?: ImageAsset; indexable?: boolean }): Metadata {
   const url = absoluteUrl(path);
-  const imageUrl = absoluteUrl(image.src);
-  const images = imageUrl ? [{ url: imageUrl, alt: image.alt }] : undefined;
-  const socialTitle = path === "/" ? title : `${title} | FOURLINE`;
+  const images = [{ url: absoluteUrl(image.src), alt: image.alt }];
+  const socialTitle = path === "/" ? title : `${title} | ${company.name}`;
   return {
     title: path === "/" ? { absolute: title } : title,
     description,
-    alternates: url ? { canonical: url } : undefined,
-    robots: { index: Boolean(allowIndexing && indexable), follow: true },
+    alternates: { canonical: url },
+    robots: { index: allowIndexing && indexable, follow: true },
     openGraph: {
       type: "website",
       locale: "ka_GE",
@@ -31,6 +30,6 @@ export function pageMetadata({
       url,
       images,
     },
-    twitter: { card: images ? "summary_large_image" : "summary", title: socialTitle, description, images },
+    twitter: { card: "summary_large_image", title: socialTitle, description, images },
   };
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
 import type { ImageAsset } from "@/data/images";
-import { company, siteUrl } from "@/data/company";
+import { company } from "@/data/company";
 import { navigation } from "@/data/navigation";
 import { absoluteUrl } from "@/lib/seo";
 import { Brand } from "./site-header";
@@ -47,10 +47,10 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
           </li>
         ))}</ol>
       </nav>
-      {siteUrl && <JsonLd data={{
+      <JsonLd data={{
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         itemListElement: crumbs.map(({ href, label }, index) => ({ "@type": "ListItem", position: index + 1, name: label, item: absoluteUrl(href) })),
-      }} />}
+      }} />
     </>
   );
 }
@@ -90,7 +90,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="container">
         <div className="footer-main">
-          <div><Brand logoPath={company.logoPath} /><p>ელექტრო და საინჟინრო სისტემები<br />მშენებლობისთვის.</p></div>
+          <div><Brand name={company.name} logoPath={company.logoPath} /><p>ელექტრო და საინჟინრო სისტემები<br />მშენებლობისთვის.</p></div>
           <nav aria-label="ქვედა მენიუ"><ul>{navigation.map(({ href, label }) => <li key={href}><Link href={href}>{label}</Link></li>)}</ul></nav>
           <address>
             <p>{company.city}, {company.country}</p>
@@ -99,7 +99,7 @@ export function SiteFooter() {
             <Link href="/contact#proposal">პროექტის განხილვა <ArrowRight size={14} aria-hidden /></Link>
           </address>
         </div>
-        <div className="footer-bottom"><span>© {new Date().getFullYear()} FOURLINE</span><Link href="/privacy">კონფიდენციალურობა</Link></div>
+        <div className="footer-bottom"><span>© {new Date().getFullYear()} {company.name}</span><Link href="/privacy">კონფიდენციალურობა</Link></div>
       </div>
     </footer>
   );

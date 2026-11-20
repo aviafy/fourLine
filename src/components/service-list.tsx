@@ -4,9 +4,9 @@ import { services, type Service } from "@/data/services";
 
 const icons = { power: Zap, panel: PanelsTopLeft, fire: Flame, signal: Radio, network: Cable, building: Building2 };
 
-export function ServiceList({ entries = services }: { entries?: Service[] }) {
+export function ServiceList({ entries = services, compact = false }: { entries?: Service[]; compact?: boolean }) {
   return (
-    <ul className="service-grid">
+    <ul className={compact ? "service-grid service-grid-compact" : "service-grid"}>
       {entries.map((service) => {
         const Icon = icons[service.icon];
         return (
@@ -14,10 +14,11 @@ export function ServiceList({ entries = services }: { entries?: Service[] }) {
             <Link href={`/services/${service.slug}`} className="service-card">
               <div className="service-card-top">
                 <span className="service-icon"><Icon size={23} strokeWidth={1.65} aria-hidden /></span>
-                <ArrowUpRight className="card-arrow" size={19} aria-hidden />
+                {!compact && <ArrowUpRight className="card-arrow" size={19} aria-hidden />}
               </div>
-              <h3>{service.shortTitle}</h3>
-              <p>{service.summary}</p>
+              {compact
+                ? <span className="service-name">{service.shortTitle}</span>
+                : <><h3>{service.shortTitle}</h3><p>{service.summary}</p></>}
             </Link>
           </li>
         );

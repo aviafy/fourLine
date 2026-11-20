@@ -17,7 +17,7 @@ export const metadata = pageMetadata({
 export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ type?: string | string[] }> }) {
   const { type } = await searchParams;
   const activeType = types.find((item) => type === item);
-  const origins: ProjectOrigin[] = ["founders", "fourline"];
+  const origins: ProjectOrigin[] = ["founders", "voltnet"];
   return (
     <>
       <PageIntro items={[{ href: "/projects", label: "პროექტები" }]} label="პორტფოლიო"

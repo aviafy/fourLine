@@ -23,7 +23,7 @@ const latin = localFont({
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
-  title: { default: company.name, template: "%s | FOURLINE" },
+  title: { default: company.name, template: `%s | ${company.name}` },
   description: company.description,
 };
 
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="ka" data-scroll-behavior="smooth" className={`${latin.variable} ${georgian.variable}`}>
       <body>
         <a className="skip-link" href="#main">ძირითად შინაარსზე გადასვლა</a>
-        <SiteHeader logoPath={company.logoPath} />
+        <SiteHeader name={company.name} logoPath={company.logoPath} phone={company.phones[0]} />
         <main id="main">{children}</main>
         <SiteFooter />
         <JsonLd data={{
@@ -41,8 +41,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           name: company.name,
           description: company.description,
           ...(company.legalName && { legalName: company.legalName }),
-          ...(siteUrl && { url: siteUrl.href }),
-          ...(siteUrl && company.logoPath && { logo: new URL(company.logoPath, siteUrl).href }),
+          url: siteUrl.href,
+          logo: new URL(company.logoPath, siteUrl).href,
           ...(company.phones.length && { telephone: company.phones.map(({ number }) => number) }),
           ...(company.email && { email: company.email }),
           areaServed: [{ "@type": "City", name: "Tbilisi" }, { "@type": "Country", name: "Georgia" }],

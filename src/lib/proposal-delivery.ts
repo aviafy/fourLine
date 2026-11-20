@@ -36,11 +36,11 @@ export async function deliverProposal(proposal: Proposal, idempotencyKey: string
       headers: {
         Authorization: `Bearer ${config.apiKey}`,
         "Content-Type": "application/json",
-        "Idempotency-Key": `fourline-proposal/${idempotencyKey}`,
+        "Idempotency-Key": `voltnet-proposal/${idempotencyKey}`,
       },
       body: JSON.stringify({
         from: config.from, to: [config.to], reply_to: email,
-        subject: "FOURLINE — ახალი მოთხოვნა", text,
+        subject: "VoltNet — ახალი მოთხოვნა", text,
       }),
     });
     if (response.ok) {

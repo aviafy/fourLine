@@ -59,8 +59,11 @@ export async function POST(request: Request) {
   const origin = request.headers.get("origin");
   const url = new URL(request.url);
   const host = request.headers.get("host") ?? url.host;
-  const expectedOrigin = siteUrl?.origin ?? `${url.protocol}//${host}`;
-  if (request.headers.get("sec-fetch-site") === "cross-site" || (origin && origin !== expectedOrigin)) {
+  const requestOrigin = `${url.protocol}//${host}`;
+  if (
+    request.headers.get("sec-fetch-site") === "cross-site" ||
+    (origin && origin !== requestOrigin && origin !== siteUrl.origin)
+  ) {
     return json({ code: "forbidden" }, 403);
   }
   if (request.headers.get("content-type")?.split(";")[0].trim() !== "application/json") {

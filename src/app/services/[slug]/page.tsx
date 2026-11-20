@@ -35,7 +35,7 @@ export default async function ServicePage({ params }: Props) {
         <div className="container detail-grid">
           <div><Label>სამონტაჟო სამუშაოები</Label><h2>სამუშაოს მოცულობა</h2>
             <ul className="scope-list">{service.scope.map((item) => <li key={item}>{item}</li>)}</ul></div>
-          <aside className="detail-aside"><h3>რატომ FOURLINE</h3>
+          <aside className="detail-aside"><h3>რატომ {company.name}</h3>
             <p>სამუშაოების მოცულობას და მასალების მოწოდების ფორმას წინასწარ ვათანხმებთ. მონტაჟის ეტაპები მშენებლობის გრაფიკსა და სხვა სამონტაჟო გუნდების სამუშაოებს ერგება.</p>
             <TextLink href="/about#founders">დამფუძნებლების გამოცდილება</TextLink>
           </aside>
@@ -52,11 +52,11 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
       <ProposalBanner />
-      {siteUrl && <JsonLd data={{
+      <JsonLd data={{
         "@context": "https://schema.org", "@type": "Service", name: service.title, description: service.summary,
         url: absoluteUrl(href), provider: { "@type": "Organization", name: company.name, url: siteUrl.href },
         areaServed: { "@type": "Country", name: "Georgia" },
-      }} />}
+      }} />
     </>
   );
 }

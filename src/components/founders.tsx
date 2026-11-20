@@ -8,8 +8,8 @@ export function Founders({ full = false }: { full?: boolean }) {
     <section className="founders-section section-pad" id="founders">
       <div className="container">
         <div className="section-head founders-head">
-          <div><Label>დამფუძნებლები</Label><h2>გამოცდილება, რომელიც<br className="desktop-break" /> დგას Fourline-ის უკან</h2></div>
-          <p>FOURLINE ახლად დაფუძნებული კომპანიაა. მის საფუძველს ორი დამფუძნებლის პრაქტიკული გამოცდილება ქმნის. თითოეული მათგანი ელექტრო და საინჟინრო სისტემებზე დაახლოებით 10 წელია მუშაობს.</p>
+          <div><Label>დამფუძნებლები</Label><h2>გამოცდილება, რომელიც<br className="desktop-break" /> დგას VoltNet-ის უკან</h2></div>
+          <p>VoltNet ახლად დაფუძნებული კომპანიაა. მის საფუძველს ორი დამფუძნებლის პრაქტიკული გამოცდილება ქმნის. თითოეული მათგანი ელექტრო და საინჟინრო სისტემებზე დაახლოებით 10 წელია მუშაობს.</p>
         </div>
         <div className="founders-grid">
           {founders.map((founder, i) => {

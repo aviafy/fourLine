@@ -5,7 +5,7 @@ import { services } from "@/data/services";
 import { proposalDeliveryReady } from "@/lib/proposal-delivery";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (!allowIndexing || !siteUrl) return [];
+  if (!allowIndexing) return [];
   const paths = ["/", "/about", "/services", ...services.map(({ slug }) => `/services/${slug}`)];
   if (hasPublicContact || proposalDeliveryReady()) paths.push("/contact");
   if (publishedProjects.length) paths.push("/projects", ...publishedProjects.map(({ slug }) => `/projects/${slug}`));

@@ -1,6 +1,6 @@
 import type { ImageAsset } from "./images";
 
-export type ProjectOrigin = "fourline" | "founders";
+export type ProjectOrigin = "voltnet" | "founders";
 
 export interface Project {
   slug: string;
@@ -24,10 +24,10 @@ export interface Project {
 export const projectOrigins: Record<ProjectOrigin, { label: string; description: string }> = {
   founders: {
     label: "დამფუძნებლების გამოცდილება",
-    description: "დამფუძნებლების მიერ FOURLINE-ის შექმნამდე შესრულებული სამუშაოები.",
+    description: "დამფუძნებლების მიერ VoltNet-ის შექმნამდე შესრულებული სამუშაოები.",
   },
-  fourline: {
-    label: "FOURLINE-ის პროექტები",
+  voltnet: {
+    label: "VoltNet-ის პროექტები",
     description: "კომპანიის სახელით შესრულებული სამუშაოები.",
   },
 };
@@ -100,7 +100,7 @@ export const projects: Project[] = [
   },
   // TODO: Replace reserved entries with documented projects. Approve publication after verifying attribution and assets.
   { slug: "founder-experience", name: "დამფუძნებლების გამოცდილება", origin: "founders", status: "placeholder", services: [], scope: [], systems: [], gallery: [] },
-  { slug: "fourline-portfolio", name: "FOURLINE-ის პროექტები", origin: "fourline", status: "placeholder", services: [], scope: [], systems: [], gallery: [] },
+  { slug: "voltnet-portfolio", name: "VoltNet-ის პროექტები", origin: "voltnet", status: "placeholder", services: [], scope: [], systems: [], gallery: [] },
 ];
 
 export function isPublishedProject(project: Project) {

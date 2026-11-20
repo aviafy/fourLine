@@ -4,8 +4,8 @@ interface NavigationItem {
 }
 
 export const navigation: NavigationItem[] = [
-  { href: "/about", label: "ჩვენ შესახებ" },
   { href: "/services", label: "მომსახურება" },
   { href: "/projects", label: "პროექტები" },
+  { href: "/about", label: "ჩვენ შესახებ" },
   { href: "/contact", label: "კონტაქტი" },
 ];

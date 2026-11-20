@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { Founders } from "@/components/founders";
 import { ProjectCard } from "@/components/projects";
 import { ServiceList } from "@/components/service-list";
@@ -11,7 +11,7 @@ import { isPublishedProject, projects, publishedProjects } from "@/data/projects
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "FOURLINE — ელექტროსამონტაჟო სამუშაოები თბილისში",
+  title: `ელექტროსამონტაჟო სამუშაოები თბილისში | ${company.name}`,
   description: company.description,
   path: "/",
 });
@@ -23,28 +23,29 @@ export default function Home() {
 
   return (
     <>
-      {siteUrl && <JsonLd data={{
+      <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "WebSite",
         name: company.name,
         url: siteUrl.href,
         inLanguage: "ka",
-      }} />}
+      }} />
       <section className="hero">
         <Photo image={imagery.hero} className="hero-photo" sizes="100vw" preload />
-        <div className="hero-overlay" />
         <div className="container hero-content">
-          <Label>ელექტრო და საინჟინრო სისტემები</Label>
-          <h1>საინჟინრო სიზუსტე<br className="desktop-break" /> ყველა პროექტში<span>.</span></h1>
-          <p>ელექტროსამონტაჟო და სუსტი დენების სისტემების სრული მოწყობა საცხოვრებელი და კომერციული ობიექტებისთვის.</p>
+          <span className="hero-location"><MapPin size={15} aria-hidden /> თბილისი, საქართველო</span>
+          <h1>ელექტრო და <span>საინჟინრო სისტემები</span></h1>
+          <p>ელექტრომონტაჟი, ქსელური ინფრასტრუქტურა და სახანძრო სიგნალიზაცია საცხოვრებელი და კომერციული ობიექტებისთვის.</p>
           <div className="hero-actions">
             <ProposalButton>მოითხოვეთ შეთავაზება</ProposalButton>
-            <Link className="button button-glass" href="/projects">იხილეთ გამოცდილება <ArrowUpRight size={17} aria-hidden /></Link>
+            <Link className="button button-glass" href="/projects">იხილეთ პროექტები <ArrowUpRight size={17} aria-hidden /></Link>
           </div>
         </div>
-        <div className="container hero-bottom">
-          <Link className="hero-scroll" href="#intro" aria-label="კომპანიის შესავლის ნახვა"><ArrowDown size={17} aria-hidden /></Link>
-          <span><MapPin size={14} aria-hidden /> თბილისი, საქართველო</span>
+      </section>
+
+      <section className="services-home" aria-label="მომსახურება">
+        <div className="container">
+          <ServiceList compact />
         </div>
       </section>
 
@@ -54,18 +55,8 @@ export default function Home() {
           <div>
             <h2>ელექტროსისტემები<br className="desktop-break" /> თანამედროვე შენობებისთვის</h2>
             <p>ვმუშაობთ დეველოპერებთან და გენერალურ კონტრაქტორებთან თბილისში. მსხვილ პროექტებს საქართველოს მასშტაბით ვიღებთ.</p>
-            <TextLink href="/about">გაიცანით FOURLINE</TextLink>
+            <TextLink href="/about">გაიცანით {company.name}</TextLink>
           </div>
-        </div>
-      </section>
-
-      <section className="services-home section-pad">
-        <div className="container">
-          <div className="section-head">
-            <div><Label>მომსახურება</Label><h2>შენობის საინჟინრო სისტემები</h2></div>
-            <TextLink href="/services">ყველა მომსახურება</TextLink>
-          </div>
-          <ServiceList />
         </div>
       </section>
 
@@ -86,7 +77,7 @@ export default function Home() {
           <Photo image={imagery.conduit} sizes="(max-width: 800px) 94vw, (max-width: 1340px) 44vw, 600px" />
           <div>
             <Label>თანამშრომლობა</Label>
-            <h2>რატომ FOURLINE</h2>
+            <h2>რატომ {company.name}</h2>
             <dl className="reason-list">
               <div><dt>ერთი სამონტაჟო პაკეტი</dt><dd>ელექტრო და სუსტი დენების სამუშაოებს საერთო გრაფიკით ვგეგმავთ.</dd></div>
               <div><dt>მასალების მოწოდების არჩევანი</dt><dd>შეგვიძლია ვიმუშაოთ თქვენი მასალებით ან მოწოდება ჩვენ ავიღოთ.</dd></div>

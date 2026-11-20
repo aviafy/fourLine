@@ -10,35 +10,34 @@ interface Company {
   description: string;
 }
 
-const phoneLabels = process.env.FOURLINE_PHONE?.split(",").map((phone) => phone.trim()).filter(Boolean);
+const phoneLabels = process.env.VOLTNET_PHONE?.split(",").map((phone) => phone.trim()).filter(Boolean);
 
 export const company: Company = {
-  name: "FOURLINE",
+  name: "VoltNet",
   city: "თბილისი",
   country: "საქართველო",
   serviceArea: "თბილისი და მსხვილი პროექტები საქართველოს მასშტაბით",
   phones: (phoneLabels?.length ? phoneLabels : ["+995 544 557 444", "+995 544 558 444"])
     .map((label) => ({ label, number: label.replace(/[^+\d]/g, "") })),
-  email: process.env.FOURLINE_EMAIL?.trim() || "fourlineelectrics@gmail.com",
-  // TODO: Add owner-approved registration and brand information.
+  email: process.env.VOLTNET_EMAIL?.trim() || "",
+  // TODO: Add owner-approved registration information.
   legalName: "",
-  logoPath: "",
+  logoPath: "/images/voltnet-wordmark.png",
   description: "ელექტროსამონტაჟო სამუშაოები და სუსტი დენების სისტემები საცხოვრებელი და კომერციული მშენებლობისთვის თბილისში და საქართველოს მასშტაბით.",
 };
 
 export const hasPublicContact = company.phones.length > 0 || Boolean(company.email);
 
-const configuredUrl = process.env.SITE_URL?.trim();
-export const siteUrl = configuredUrl ? new URL(configuredUrl) : undefined;
+export const siteUrl = new URL(process.env.SITE_URL?.trim() || "https://voltnet.ge");
 
-if (siteUrl && (
+if (
   !["http:", "https:"].includes(siteUrl.protocol) ||
   siteUrl.href !== `${siteUrl.origin}/`
-)) {
+) {
   throw new Error("SITE_URL must be an HTTP or HTTPS origin without a path, query string, or fragment.");
 }
 
 const vercelEnvironment = process.env.VERCEL_ENV;
-export const allowIndexing = siteUrl?.protocol === "https:" &&
+export const allowIndexing = siteUrl.protocol === "https:" &&
   process.env.SITE_INDEXABLE === "true" &&
   (!vercelEnvironment || vercelEnvironment === "production");

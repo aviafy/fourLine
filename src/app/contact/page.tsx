@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
   title: "კონტაქტი და კომერციული შეთავაზება",
-  description: "გაგვიზიარეთ თქვენი ობიექტის მდებარეობა, სამუშაოების მოცულობა და ვადები FOURLINE-ის კომერციული შეთავაზებისთვის.",
+  description: "გაგვიზიარეთ თქვენი ობიექტის მდებარეობა, სამუშაოების მოცულობა და ვადები VoltNet-ის კომერციული შეთავაზებისთვის.",
   path: "/contact",
   indexable: hasPublicContact || proposalDeliveryReady(),
 });
@@ -22,7 +22,7 @@ export default function ContactPage() {
       <section className="section-pad listing-section" id="proposal">
         <div className="container contact-grid">
           <aside className="contact-details">
-            <Label>FOURLINE</Label><h2>დაგვიკავშირდით</h2>
+            <Label>VoltNet</Label><h2>დაგვიკავშირდით</h2>
             <address>
               <p><MapPin size={20} aria-hidden /><span><strong>{company.city}, {company.country}</strong><br />{company.serviceArea}</span></p>
               {company.phones.map(({ label, number }) => (

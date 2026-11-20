@@ -5,14 +5,14 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "ჩვენ შესახებ",
-  description: "გაიცანით FOURLINE-ის დამფუძნებლები და მათი გამოცდილება საცხოვრებელი და კომერციული შენობების ელექტროსისტემებში.",
+  description: "გაიცანით VoltNet-ის დამფუძნებლები და მათი გამოცდილება საცხოვრებელი და კომერციული შენობების ელექტროსისტემებში.",
   path: "/about",
 });
 
 export default function About() {
   return (
     <>
-      <PageIntro items={[{ href: "/about", label: "ჩვენ შესახებ" }]} label="კომპანია" title="FOURLINE-ის შესახებ"
+      <PageIntro items={[{ href: "/about", label: "ჩვენ შესახებ" }]} label="კომპანია" title="VoltNet-ის შესახებ"
         description="ელექტრო და სუსტი დენების სისტემების სამონტაჟო გუნდი დეველოპერებისა და გენერალური კონტრაქტორებისთვის."
         image={imagery.facade} />
       <Founders full />

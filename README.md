@@ -1,4 +1,4 @@
-# FOURLINE
+# VoltNet
 
 Georgian-first corporate website for an electrical and building systems contractor in Tbilisi. The primary runtime is Next.js App Router with TypeScript, Tailwind CSS, self-hosted Georgian and Latin fonts, Lucide, and Zod.
 
@@ -33,22 +33,22 @@ The Next.js build runs on a Node.js host. For private OpenAI Sites hosting, `npm
 | `src/data/services.ts` | Service descriptions, work scopes and illustrations |
 | `src/data/images.ts` | Image paths, Georgian alt text, illustrative labels and crop positions |
 
-Place approved images under `public/images`. Use project origins `fourline` for work delivered under FOURLINE and `founders` for work the founders completed before it was formed. Set a project to `published` after verifying its location, building type, description, scope, systems and authentic cover image. Link service and founder records with their respective slugs. Reserved portfolio pages stay out of the sitemap and carry `noindex`.
+Place approved images under `public/images`. Use project origins `voltnet` for work delivered under VoltNet and `founders` for work the founders completed before it was formed. Set a project to `published` after verifying its location, building type, description, scope, systems and authentic cover image. Link service and founder records with their respective slugs. Reserved portfolio pages stay out of the sitemap and carry `noindex`.
 
 ## Proposal form
 
 1. Verify a sending domain in [Resend](https://resend.com/docs/dashboard/domains/introduction).
 2. Set `RESEND_API_KEY`, `PROPOSAL_FROM_EMAIL` from the verified domain, and `PROPOSAL_TO_EMAIL` for the inquiry inbox in the server environment.
-3. Set `SITE_URL` to the exact canonical HTTPS origin. The public contacts in `src/data/company.ts` can be overridden with `FOURLINE_EMAIL` and `FOURLINE_PHONE` (a comma-separated list of numbers).
+3. Set `VOLTNET_EMAIL` to enable the public email link. Use `VOLTNET_PHONE` to override the default numbers with a comma-separated list.
 4. Rebuild with the production configuration, submit an inquiry, and verify it arrives in the inbox.
 
 The POST handler validates the request with Zod, checks the request origin, limits the body size, and uses a honeypot, per-instance rate limiting and an idempotency key. The UI reports acceptance only after the provider returns a message ID. API keys are read exclusively on the server. Set `PROPOSAL_TRUSTED_IP_HEADER` only if your ingress overwrites that header with the verified client IP. Apply a shared edge rate limit to `POST /api/proposal` on multi-instance hosts if a uniform quota is needed.
 
 ## Public launch
 
-Supply the approved circuit-4 logo, two founder profiles and portraits, attributable project records and photos, company legal details, and public contact information. Review the Georgian copy and the privacy notice in `src/app/privacy/page.tsx` against the actual service scope and data-handling practice. The privacy route stays excluded from indexing while the notice awaits approval.
+Supply two founder profiles and portraits, attributable project records and photos, company legal details, and public contact information. Review the Georgian copy and the privacy notice in `src/app/privacy/page.tsx` against the actual service scope and data-handling practice. The privacy route stays excluded from indexing while the notice awaits approval.
 
-On Vercel, import the repository with the **Next.js** framework preset and use `main` as the production branch. In Production environment variables, set `SITE_URL` to the final HTTPS domain origin. Keep Vercel system environment variables exposed so the application can identify Preview deployments.
+The canonical origin defaults to `https://voltnet.ge`. Set `SITE_URL` only to override it. On Vercel, import the repository with the **Next.js** framework preset and use `main` as the production branch. Keep Vercel system environment variables exposed so the application can identify Preview deployments.
 
 After content and delivery are approved, set `SITE_INDEXABLE=true` in **Production** and redeploy. Verify that the homepage declares the final domain as canonical and submit `/sitemap.xml` in Google Search Console. Preview builds emit `noindex` and omit the sitemap reference from `robots.txt`.
 
@@ -56,6 +56,7 @@ After content and delivery are approved, set `SITE_INDEXABLE=true` in **Producti
 
 ImageGen produced the photographic illustrations in `public/images`. The website labels them as illustrations. Replace them with owner-approved imagery when available.
 
+- `engineering-hero.webp` — Blue-hour architectural illustration with an electrical and network cutaway. The landing page and default sharing cards use it.
 - `architecture.webp` — Architectural editorial photograph of a Georgian residential building at blue hour, with stepped fair-faced concrete terraces, warm interior lights, and deep slate shadows.
 - `facade.webp` — Upward editorial photograph between two narrow, parallel concrete façades, with graphite framing and overcast light.
 - `conduit.webp`, `panels.webp`, `network.webp` — Three crops from an editorial contact sheet of a concrete service corridor, charcoal electrical distribution cabinets, a fire service illustration, and network racks.

@@ -9,7 +9,7 @@ export function Founders({ full = false }: { full?: boolean }) {
       <div className="container">
         <div className="section-head founders-head">
           <div><Label>დამფუძნებლები</Label><h2>გამოცდილება, რომელიც<br className="desktop-break" /> დგას VoltNet-ის უკან</h2></div>
-          <p>VoltNet ახლად დაფუძნებული კომპანიაა. მის საფუძველს ორი დამფუძნებლის პრაქტიკული გამოცდილება ქმნის. თითოეული მათგანი ელექტრო და საინჟინრო სისტემებზე დაახლოებით 10 წელია მუშაობს.</p>
+          <p>VoltNet ახლად დაფუძნებული კომპანიაა. მის საფუძველს ორი დამფუძნებლის პრაქტიკული გამოცდილება ქმნის.</p>
         </div>
         <div className={full ? "founders-grid founders-grid-full" : "founders-grid"}>
           {founders.map((founder, i) => {
@@ -24,7 +24,7 @@ export function Founders({ full = false }: { full?: boolean }) {
                   </div>
                 )}
                 <div className="founder-details">
-                  <p className="founder-role">{founder.position}{!founder.name && ` · ≈ ${founder.yearsOfExperience} წელი`}</p>
+                  <p className="founder-role">{founder.position}{!founder.name && founder.yearsOfExperience !== undefined && ` · ≈ ${founder.yearsOfExperience} წელი`}</p>
                   <h3>{founder.name ?? `თანადამფუძნებელი ${i + 1}`}</h3>
                   {fullBiography.length > 0
                     ? fullBiography.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
